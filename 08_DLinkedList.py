@@ -4,7 +4,7 @@ class node:
         self.data = data
         self.next = None
 
-class linkedList:
+class DLL:
     def __init__(self):
         self.head = None    # Initialize head as None
 
@@ -13,7 +13,12 @@ class linkedList:
             print("Linked list is empty !! ")
         else:
             currentNode = self.head
+            print("None > ")
             while currentNode is not None:
                 print(currentNode.data, end=" > ")
                 currentNode = currentNode.next
             print("None")
+
+dll1 = DLL()
+
+dll1.trav()
