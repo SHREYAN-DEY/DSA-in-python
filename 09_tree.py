@@ -1,18 +1,23 @@
 class bst:
     def __init__(self,key):
         self.key = key
-        self.lchild = None
-        self.rchile = None
+        self.left = None
+        self.right = None
 
     def insert(self, data):
         if self.key is None:
             self.key = data
             return
-        elif self.key > data:
-            if self.lchild:
-                self.lchild.insert(data)
+        if self.key > data:
+            if self.left:
+                self.left.insert(data)
             else:
-                self.lchild = bst(data)
+                self.left = bst(data)
+        else:
+            if self.right:
+                self.right.insert(data)
+            else:
+                self.right = bst(data)
 
 root = bst(None)
 root.insert(10)
@@ -21,7 +26,7 @@ print(root.key)
 
 # class node:
 #     def __init__(self,key):
-#         self.lchild = None
+#         self.left = None
 #         self.key = key
 #         self.rchild = None
 
