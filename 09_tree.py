@@ -1,14 +1,14 @@
 # class bst:
-#     def __init__(self,key = None):
-#         self.key = key
+#     def __init__(self,value = None):
+#         self.value = value
 #         self.left = None
 #         self.right = None
 
 #     def insert(self, data):
-#         if self.key is None:
-#             self.key = data
+#         if self.value is None:
+#             self.value = data
 #             return
-#         if self.key > data:
+#         if self.value > data:
 #             if self.left:
 #                 self.left.insert(data)
 #             else:
@@ -22,7 +22,7 @@
 # root = bst()
 # root.insert(10)
 
-# print(root.key)
+# print(root.value)
 
 class node:
     def __init__(self,value = None):
@@ -62,8 +62,14 @@ class bst:
     def _printTree(self, currNode):
         if currNode is not None:
             self._printTree(currNode.left)
-            print(str(currNode.value))
+            print(currNode.value," ", end="")
             self._printTree(currNode.right)
+
+    # def printTree(self, root):
+    #     if root is not None:
+    #         self.printTree(root.left)
+    #         print(root.value," ", end="")
+    #         self.printTree(root.right)
 
 
 
@@ -73,5 +79,8 @@ tree.insert(10)
 tree.insert(10)
 tree.insert(9)
 tree.insert(11)
+tree.insert(6)
+tree.insert(18)
 
 tree.printTree()
+# tree.printTree(tree.root) # this is for the second type of print function
