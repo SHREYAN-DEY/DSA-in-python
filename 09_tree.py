@@ -71,6 +71,19 @@ class bst:
     #         print(root.value," ", end="")
     #         self.printTree(root.right)
 
+    def search(self, value, root):
+        if root is None:
+            print(f"{value} is NOT present in the tree")
+            return False
+        
+        if root.value == value:
+            print(f"{value} is present in the tree")
+            return True
+        elif value < root.value:
+            self.search(value, root.left)
+        else:
+            self.search(value, root.right)
+
 
 
 
@@ -82,5 +95,7 @@ tree.insert(11)
 tree.insert(6)
 tree.insert(18)
 
-tree.printTree()
+# tree.printTree()
 # tree.printTree(tree.root) # this is for the second type of print function
+
+tree.search(20,tree.root)
