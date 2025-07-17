@@ -58,6 +58,7 @@ class bst:
     def printTree(self): 
         if self.root is not None:
             self._printTree(self.root)
+            print("\n")
 
     def _printTree(self, currNode):
         if currNode is not None:
@@ -84,7 +85,69 @@ class bst:
         else:
             self.search(value, root.right)
 
+    # def delete(self,value):
+    #     if self.value is None:
+    #        print("Tree is empty !!")
+    #        return
+    #     if value < self.value:
+    #         if self.left:
+    #             self.left = self.left.delete(value)
+    #         else:
+    #             print("Given node is not present ")
+    #     elif value > self.value:
+    #         if self.right:
+    #             self.right = self.right.delete(value)
+    #         else:
+    #             print("Given node is not present ")
+    #     else:
+    #         if self.left is None:
+    #             temp = self.right
+    #             self = None
+    #             return temp
+    #         if self.right is None:
+    #             temp = self.left
+    #             self = None
+    #             return temp
+    #         node = self.right
+    #         while node.left:
+    #             node = node.left
+    #         self.value = node.value
+    #         self.right = self.right.delete(node.value)
 
+    def delete(self, value):
+        if self.root is None:
+            print("Tree is empty")
+            return
+        self.root = self._delete(self.root,value)
+
+    def _delete(self,currNode, value):
+        if currNode is None:
+            print("Given node is not present ")
+            return None
+        if value < currNode.value:
+            currNode.left = self._delete(currNode.left, value)
+            return currNode
+        elif value > currNode.value:
+            currNode.right = self._delete(currNode.right, value)
+            return currNode
+        else:
+            if currNode.left is None:
+                temp = currNode.right
+                return temp
+            elif currNode.right is None:
+                temp = currNode.left
+                return temp
+            
+            successor = currNode.right
+            while successor.left is not None:
+                successor = successor.left
+
+            currNode.value = successor.value
+
+            currNode.right = self._delete(currNode.right, successor.value)
+            return currNode
+
+            
 
 
 tree = bst()
@@ -95,7 +158,9 @@ tree.insert(11)
 tree.insert(6)
 tree.insert(18)
 
-# tree.printTree()
+tree.printTree()
 # tree.printTree(tree.root) # this is for the second type of print function
 
 tree.search(20,tree.root)
+tree.delete(6)
+tree.printTree()
