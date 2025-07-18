@@ -66,11 +66,6 @@ class bst:
             print(currNode.value," ", end="")
             self._printTree(currNode.right)
 
-    # def printTree(self, root):
-    #     if root is not None:
-    #         self.printTree(root.left)
-    #         print(root.value," ", end="")
-    #         self.printTree(root.right)
 
     def search(self, value, root):
         if root is None:
@@ -146,6 +141,28 @@ class bst:
 
             currNode.right = self._delete(currNode.right, successor.value)
             return currNode
+        
+    def minNode(self):
+        currNode = self.root
+        if currNode is None:
+            print("Tree is empty")
+            return
+        else:
+            while currNode.left:
+                currNode = currNode.left
+            print(f"The min node is {currNode.value}")
+
+    def maxNode(self):
+        currNode = self.root
+        if currNode is None:
+            print("Tree is empty")
+            return
+        else:
+            while currNode.right:
+                currNode = currNode.right
+            print(f"The max node is {currNode.value}")
+
+
 
             
 
@@ -159,8 +176,12 @@ tree.insert(6)
 tree.insert(18)
 
 tree.printTree()
-# tree.printTree(tree.root) # this is for the second type of print function
 
 tree.search(20,tree.root)
-tree.delete(6)
-tree.printTree()
+
+# tree.delete(10)
+# tree.printTree()
+
+tree.minNode()
+tree.maxNode()
+
