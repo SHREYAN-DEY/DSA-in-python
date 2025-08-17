@@ -1,6 +1,8 @@
 # prefix & suffix
-def productExceptSelf(nums: list[int]):
+def productExceptSelf_1(nums: list[int]):
+    #calculate the length of the input array
     n = len(nums)
+    # creating 3 list for storing values
     res = [0] * n
     prefix = [0] * n
     suffix = [0] * n
@@ -20,7 +22,29 @@ def productExceptSelf(nums: list[int]):
     return res
 
 
+def productExceptSelf_2(nums):
+    # the array that we wil fill w the values
+        answer = [1] * len(nums)
+
+        # calculate up until i 
+        prefix = 1
+        for i in range(len(nums)):
+            # if not curr idex num, we multply it 
+            answer[i] = prefix
+            prefix *= nums[i]
+
+        suffix = 1
+        # calculate up until i R to L
+        # iterate backwards through the array
+        for i in range(len(nums) - 1, -1, -1):
+            # if not curr idex num, we multply it 
+            answer[i] *= suffix
+            suffix *= nums[i]
+        
+        return answer
+
+
 nums = [1,2,3,4]
 # nums = [-1,0,1,2,3]
-res = productExceptSelf(nums)
+res = productExceptSelf_2(nums)
 print(res)
