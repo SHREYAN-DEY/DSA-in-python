@@ -1,4 +1,7 @@
 a = 12
-b = "hellow"
+b = "hello !!"
+c = "Prerana"
 
-print(a+b)
+print(b + c)
+
+print("Her age is " + a)
